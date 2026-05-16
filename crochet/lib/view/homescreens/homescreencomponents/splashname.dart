@@ -49,7 +49,7 @@ class _AnimatedLogoTextState extends State<AnimatedLogoText> {
             style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
-              color: ColorPallete.primary,
+              color: ColorPallete.secondary,
             ),
           ),
         ),
@@ -59,7 +59,7 @@ class _AnimatedLogoTextState extends State<AnimatedLogoText> {
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
-            color: ColorPallete.primary,
+            color: ColorPallete.background,
           ),
         ),
       ],
