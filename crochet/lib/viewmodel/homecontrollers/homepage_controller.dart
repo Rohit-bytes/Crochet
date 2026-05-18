@@ -10,7 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 class HomepageController extends GetxController {
   List<dynamic> cats = [];
-
+  PageController pagecontroller = PageController();
   bool isLoading = false;
 
   @override
@@ -32,6 +32,22 @@ class HomepageController extends GetxController {
       isLoading = false;
       update();
     }
+  }
+
+  int bottomnavigationindex = 0;
+
+  void changeindex(int i) {
+    bottomnavigationindex = i;
+
+    pagecontroller.animateToPage(
+      i,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+
+    print(bottomnavigationindex);
+
+    update();
   }
 
   Future<void> downloadImage(BuildContext context, String url) async {
