@@ -30,10 +30,22 @@ class Homepage extends StatelessWidget {
               homepagecontroller.isLoading == true
                   ? Expanded(
                       child: Center(
-                        child: Image.asset(
-                          "assets/logo.gif",
-                          height: 40.h,
-                          width: 30.w,
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              "assets/logo.gif",
+                              height: 40.h,
+                              width: 30.w,
+                            ),
+                            Text(
+                              "Loading...",
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.8),
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     )

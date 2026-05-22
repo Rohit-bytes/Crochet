@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "539919741562",
+    "project_id": "assistant-usco",
+    "storage_bucket": "assistant-usco.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539919741562:android:d4184909f7e7680e3801c3",
+        "android_client_info": {
+          "package_name": "com.example.crochet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539919741562-4ufnr7vt6o0kp32720rurf4caca5v528.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOguG4NkEdh-WHf30XLBxYCabxoINS4Yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539919741562-4ufnr7vt6o0kp32720rurf4caca5v528.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
