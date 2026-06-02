@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:crochet/view/apputils/customappbar.dart';
 import 'package:crochet/view/customtheme/color_pallete.dart';
-import 'package:crochet/view/homescreens/favorite_screen.dart';
+import 'package:crochet/view/homescreens/profile_screen.dart';
 import 'package:crochet/view/homescreens/homescreencomponents/customimageview.dart';
 import 'package:crochet/viewmodel/homecontrollers/homepage_controller.dart';
 import 'package:flutter/material.dart';
