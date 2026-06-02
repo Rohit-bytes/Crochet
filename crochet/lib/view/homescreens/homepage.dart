@@ -28,25 +28,23 @@ class Homepage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               homepagecontroller.isLoading == true
-                  ? Expanded(
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/logo.gif",
-                              height: 40.h,
-                              width: 30.w,
+                  ? Center(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            "assets/logo.gif",
+                            height: 40.h,
+                            width: 30.w,
+                          ),
+                          Text(
+                            "Loading:)",
+                            style: TextStyle(
+                              color: ColorPallete.primary.withOpacity(0.8),
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
                             ),
-                            Text(
-                              "Loading...",
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(0.8),
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     )
                   : Expanded(
