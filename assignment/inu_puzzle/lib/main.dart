@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      title: 'INU Puzzle',
+      title: 'Pawzle',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       home: const HomeScreen(),
     );
