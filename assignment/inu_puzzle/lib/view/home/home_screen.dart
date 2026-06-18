@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inu_puzzle/core/service/audio_service.dart';
-import 'package:inu_puzzle/view/home/puzzle_pieces.dart';
-import 'package:inu_puzzle/view/home/puzzlecomponent.dart';
+import 'package:inu_puzzle/view/home/reusable_components/puzzle_pieces.dart';
+import 'package:inu_puzzle/view/home/reusable_components/puzzlecomponent.dart';
 import 'package:inu_puzzle/viewmodel/puzzlecontroller.dart';
 
 class HomeScreen extends StatefulWidget {
