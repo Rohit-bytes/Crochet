@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:inu_puzzle/core/service/audio_service.dart';
 import 'package:inu_puzzle/view/home/home_screen.dart';
+import 'package:inu_puzzle/view/splash/splash_screen.dart';
 import 'package:inu_puzzle/viewmodel/puzzlecontroller.dart';
 
 void main() {
@@ -22,8 +23,10 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       title: 'Pawzle',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const HomeScreen(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      home: SplashScreen(),
     );
   }
 }
