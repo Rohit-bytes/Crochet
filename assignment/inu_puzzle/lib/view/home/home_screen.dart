@@ -243,15 +243,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           child: TextButton(
                             onPressed: () {
-                              if (puzzlecontroller.timeLeft <= 0) {
-                                puzzlecontroller.tryagain();
+                              if (puzzlecontroller.isgameover == true) {
+                                puzzlecontroller.resetGame();
+                              } else if (puzzlecontroller.isgamestart ==
+                                      false &&
+                                  puzzlecontroller.timeLeft > 0) {
+                                puzzlecontroller.startGame();
+                              } else if (puzzlecontroller.timeLeft <= 0) {
+                                puzzlecontroller.resetGame();
                               } else {
                                 puzzlecontroller.startGame();
                               }
                             },
                             child: Text(
-                              (puzzlecontroller.isgamestart)
-                                  ? 'RESTART GAME'
+                              (puzzlecontroller.isgameover == true)
+                                  ? 'Next Round'
                                   : 'START GAME',
                               textAlign: TextAlign.center,
                               style: TextStyle(color: Colors.white),

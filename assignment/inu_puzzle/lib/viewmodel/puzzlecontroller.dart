@@ -52,6 +52,7 @@ class Puzzlecontroller extends GetxController {
     if (isPuzzleSolved()) {
       // You can trigger your success dialog or state change here!
       print("Puzzle Solved successfully!");
+      gameOver();
       Get.find<AudioService>().win();
       GamePopup.win();
       isgamestart = false;
@@ -90,6 +91,7 @@ class Puzzlecontroller extends GetxController {
         timer.cancel();
         // Handle what happens when the timer runs out
         print("Time's up!");
+        gameOver();
         Get.find<AudioService>().lose();
         GamePopup.timeUp();
       }
@@ -105,13 +107,7 @@ class Puzzlecontroller extends GetxController {
     stopTimer(); // Stop any existing timer
     getPuzzleImage(); // Fetch a new image and reset the puzzle
     isgamestart = false;
-    update(); // Update the UI to reflect the reset state
-  }
-
-  void resetsameGame() {
-    timeLeft = 120; // Reset timer to 2 minutes
-    stopTimer(); // Stop any existing timer
-    isgamestart = false;
+    isgameover = false;
     update(); // Update the UI to reflect the reset state
   }
 
@@ -123,13 +119,11 @@ class Puzzlecontroller extends GetxController {
     update();
   }
 
-  void tryagain() {
-    if (timeLeft <= 0) {
-      isgamestart = false;
-      resetsameGame();
-    } else {
-      isgamestart = true;
-      update();
-    }
+  bool isgameover = false;
+
+  void gameOver() {
+    isgameover = true;
+    stopTimer();
+    update();
   }
 }
