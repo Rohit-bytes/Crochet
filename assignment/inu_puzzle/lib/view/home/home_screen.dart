@@ -39,146 +39,145 @@ class _HomeScreenState extends State<HomeScreen> {
 
         return Scaffold(
           backgroundColor: Colors.white,
-          body: SafeArea(
-            child: Column(
-              children: [
-                // Top Image Section
-                Container(
-                  height: 150,
-                  // color: Colors.red,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        "https://i.pinimg.com/originals/9a/a3/5e/9aa35edded370761aff4065510146b56.gif",
-                      ),
-                      fit: BoxFit.cover,
+          body: Column(
+            children: [
+              // Top Image Section
+              Container(
+                height: 150,
+                // color: Colors.red,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      "https://i.pinimg.com/originals/9a/a3/5e/9aa35edded370761aff4065510146b56.gif",
                     ),
-                    border: Border(
-                      bottom: BorderSide(color: Colors.grey.shade300, width: 1),
-                    ),
+                    fit: BoxFit.cover,
                   ),
-                  padding: const EdgeInsets.all(8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Puzzlecomponent(width: 100, height: 100),
-                      const SizedBox(width: 10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Time Left:\n${puzzlecontroller.timeLeft} seconds",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () async {
-                              Get.find<AudioService>().toggleBackgroundMusic();
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color: Colors.yellow,
-                                  width: 1.5,
-                                ),
-                              ),
-                              child: Obx(
-                                () => Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Icon(
-                                    Get.find<AudioService>().isPlaying.value
-                                        ? Icons.music_note
-                                        : Icons.music_off,
-                                    color: Colors.white,
-                                    size: 20,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  border: Border(
+                    bottom: BorderSide(color: Colors.grey.shade300, width: 1),
                   ),
                 ),
-
-                // Puzzle Grid Section
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFF0A2540),
-                          Color(0xFF134E9B),
-                          Color(0xFF0A2540),
-                        ],
-                        stops: [0.0, 0.5, 1.0],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      color: Color.fromRGBO(9, 57, 109, 1),
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.yellow,
-                            borderRadius: BorderRadius.circular(50),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3),
-                              ),
-                            ],
-                            border: Border.all(color: Colors.yellow, width: 10),
+                padding: const EdgeInsets.all(8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Puzzlecomponent(width: 100, height: 100),
+                    const SizedBox(width: 10),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Time Left:\n${puzzlecontroller.timeLeft} seconds",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
                           ),
-                          child: AbsorbPointer(
-                            absorbing:
-                                puzzlecontroller.timeLeft == 0 ||
-                                puzzlecontroller.isgamestart == false,
-                            child: SizedBox(
-                              width: boardSize,
-                              height: boardSize,
-                              child: GridView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: puzzlecontroller.pieceOrder.length,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: puzzlecontroller.gridSize,
-                                    ),
-                                itemBuilder: (context, index) {
-                                  // 3. Get the shuffled piece ID currently sitting at this index
-                                  int pieceId =
-                                      puzzlecontroller.pieceOrder[index];
-
-                                  // 4. Calculate where this chunk of the image targets originally
-                                  int correctRow =
-                                      pieceId ~/ puzzlecontroller.gridSize;
-                                  int correctCol =
-                                      pieceId % puzzlecontroller.gridSize;
-
-                                  return PuzzlePiece(
-                                    imageUrl: puzzlecontroller.puzzleUrl,
-                                    correctRow: correctRow,
-                                    correctCol: correctCol,
-                                    gridSize: puzzlecontroller.gridSize,
-                                    size: pieceSize,
-                                    currentIndex: index,
-                                    onPieceSwapped: puzzlecontroller.swapPieces,
-                                  );
-                                },
+                        ),
+                        GestureDetector(
+                          onTap: () async {
+                            Get.find<AudioService>().toggleBackgroundMusic();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: Colors.yellow,
+                                width: 1.5,
                               ),
+                            ),
+                            child: Obx(
+                              () => Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Get.find<AudioService>().isPlaying.value
+                                      ? Icons.music_note
+                                      : Icons.music_off,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              // Puzzle Grid Section
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color(0xFF0A2540),
+                        Color(0xFF134E9B),
+                        Color(0xFF0A2540),
+                      ],
+                      stops: [0.0, 0.5, 1.0],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    color: Color.fromRGBO(9, 57, 109, 1),
+                  ),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.yellow,
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                          border: Border.all(color: Colors.yellow, width: 10),
+                        ),
+                        child: AbsorbPointer(
+                          absorbing:
+                              puzzlecontroller.timeLeft == 0 ||
+                              puzzlecontroller.isgamestart == false,
+                          child: SizedBox(
+                            width: boardSize,
+                            height: boardSize,
+                            child: GridView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: puzzlecontroller.pieceOrder.length,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: puzzlecontroller.gridSize,
+                                  ),
+                              itemBuilder: (context, index) {
+                                // 3. Get the shuffled piece ID currently sitting at this index
+                                int pieceId =
+                                    puzzlecontroller.pieceOrder[index];
+
+                                // 4. Calculate where this chunk of the image targets originally
+                                int correctRow =
+                                    pieceId ~/ puzzlecontroller.gridSize;
+                                int correctCol =
+                                    pieceId % puzzlecontroller.gridSize;
+
+                                return PuzzlePiece(
+                                  imageUrl: puzzlecontroller.puzzleUrl,
+                                  correctRow: correctRow,
+                                  correctCol: correctCol,
+                                  gridSize: puzzlecontroller.gridSize,
+                                  size: pieceSize,
+                                  currentIndex: index,
+                                  onPieceSwapped: puzzlecontroller.swapPieces,
+                                );
+                              },
                             ),
                           ),
                         ),
@@ -186,8 +185,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           bottomNavigationBar: Container(
             decoration: BoxDecoration(
@@ -243,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           child: TextButton(
                             onPressed: () {
-                              if (puzzlecontroller.isgameover == true) {
+                              if (puzzlecontroller.isPuzzleSolved() == true) {
                                 puzzlecontroller.resetGame();
                               } else if (puzzlecontroller.isgamestart ==
                                       false &&
@@ -256,8 +255,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               }
                             },
                             child: Text(
-                              (puzzlecontroller.isgameover == true)
-                                  ? 'Next Round'
+                              puzzlecontroller.isgamestart
+                                  ? 'GAME RUNNING'
+                                  : puzzlecontroller.isPuzzleSolved()
+                                  ? 'NEXT ROUND'
                                   : 'START GAME',
                               textAlign: TextAlign.center,
                               style: TextStyle(color: Colors.white),

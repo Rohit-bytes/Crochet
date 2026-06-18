@@ -102,12 +102,17 @@ class Puzzlecontroller extends GetxController {
     timer?.cancel();
   }
 
+  void settimer() {
+    timeLeft = 120;
+    update();
+  }
+
   void resetGame() {
-    timeLeft = 120; // Reset timer to 2 minutes
+    settimer();
     stopTimer(); // Stop any existing timer
     getPuzzleImage(); // Fetch a new image and reset the puzzle
     isgamestart = false;
-    isgameover = false;
+    isPuzzleSolved();
     update(); // Update the UI to reflect the reset state
   }
 
@@ -119,10 +124,8 @@ class Puzzlecontroller extends GetxController {
     update();
   }
 
-  bool isgameover = false;
-
   void gameOver() {
-    isgameover = true;
+    isPuzzleSolved();
     stopTimer();
     update();
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:inu_puzzle/core/service/audio_service.dart';
 import 'package:inu_puzzle/view/home/home_screen.dart';
@@ -7,6 +8,7 @@ import 'package:inu_puzzle/viewmodel/puzzlecontroller.dart';
 void main() {
   Get.put(Puzzlecontroller());
   Get.put(AudioService(), permanent: true);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const MyApp());
 }
 
