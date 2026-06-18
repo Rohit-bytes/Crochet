@@ -6,10 +6,16 @@ import 'package:inu_puzzle/view/home/home_screen.dart';
 import 'package:inu_puzzle/view/splash/splash_screen.dart';
 import 'package:inu_puzzle/viewmodel/puzzlecontroller.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   Get.put(Puzzlecontroller());
   Get.put(AudioService(), permanent: true);
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   runApp(const MyApp());
 }
 
