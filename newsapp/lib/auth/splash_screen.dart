@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     Timer(const Duration(seconds: 3), () async {
       if (supabase.auth.currentUser == null) {
-        Get.offNamed(AppRoutes.chooserole);
+        Get.offNamed(AppRoutes.register);
       } else {
         final authController = Get.find<AuthController>();
         await authController.getUserDetails();
@@ -90,7 +90,7 @@ class _SplashScreenState extends State<SplashScreen>
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Image.asset("assets/splash_screen.png", height: 280.h),
+                        Image.asset("assets/appLogo.png", height: 200.h),
                       ],
                     ),
                   ),
