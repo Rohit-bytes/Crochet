@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:trust/main.dart';
 import '../../core/routes/app_routes.dart';
 import '../../data/services/auth_service.dart';
@@ -12,6 +13,7 @@ class NewsItem {
   final String sourceType;
   final int credibility;
   final String category;
+  final String news;
 
   const NewsItem({
     required this.title,
@@ -20,6 +22,7 @@ class NewsItem {
     required this.sourceType,
     required this.credibility,
     required this.category,
+    required this.news,
   });
 }
 
@@ -47,6 +50,7 @@ class HomeController extends GetxController {
       },
     );
     getNews();
+    listenToNews();
   }
 
   @override
@@ -57,6 +61,24 @@ class HomeController extends GetxController {
 
   List<NewsItem> news = [];
   bool isloading = false;
+
+  RealtimeChannel? _newsChannel;
+  void listenToNews() {
+    _newsChannel = supabase
+        .channel('news_changes')
+        .onPostgresChanges(
+          event: PostgresChangeEvent.all,
+          schema: 'public',
+          table: 'news',
+          callback: (payload) {
+            print('News database changed: ${payload.eventType}');
+
+            getNews();
+          },
+        )
+        .subscribe();
+  }
+
   Future<void> getNews() async {
     try {
       isloading = true;
@@ -71,6 +93,7 @@ class HomeController extends GetxController {
           sourceType: item['sourcetype'] ?? '',
           credibility: item['credibility'] ?? 0,
           category: item['category'] ?? '',
+          news: item['news'] ?? '',
         );
       }).toList();
       print(news);

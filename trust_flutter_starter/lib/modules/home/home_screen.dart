@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:trust/modules/home/news_screen.dart';
 import '../../core/theme/app_colors.dart';
 import 'home_controller.dart';
 
@@ -131,71 +132,78 @@ class HomeScreen extends StatelessWidget {
                       final isAi = item.sourceType == 'ai_generated';
                       // final accent = isAi ? AppColors.purple : AppColors.green;
                       final accent = isAi ? AppColors.purple : AppColors.purple;
-                      return Container(
-                        padding: const EdgeInsets.all(18),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: AppColors.border),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 6),
-                                  decoration: BoxDecoration(
-                                    color: accent.withOpacity(.10),
-                                    borderRadius: BorderRadius.circular(20),
+                      return InkWell(
+                        borderRadius: BorderRadius.circular(18),
+                        onTap: () {
+                          Get.to(() => NewsScreen(news: item));
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(18),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: AppColors.border),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 6),
+                                    decoration: BoxDecoration(
+                                      color: accent.withOpacity(.10),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Text(
+                                        // AI GENERATED
+                                        //JOURNALIST
+                                        isAi ? '???' : '???',
+                                        style: TextStyle(
+                                            color: accent,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 10)),
                                   ),
-                                  child: Text(
-                                      // AI GENERATED
-                                      //JOURNALIST
-                                      isAi ? '???' : '???',
-                                      style: TextStyle(
-                                          color: accent,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 10)),
-                                ),
-                                const Spacer(),
-                                Text(item.category,
-                                    style: const TextStyle(
-                                        color: AppColors.muted, fontSize: 11)),
-                              ],
-                            ),
-                            const SizedBox(height: 14),
-                            Text(item.title,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.text)),
-                            const SizedBox(height: 8),
-                            Expanded(
-                              child: Text(item.summary,
+                                  const Spacer(),
+                                  Text(item.category,
+                                      style: const TextStyle(
+                                          color: AppColors.muted,
+                                          fontSize: 11)),
+                                ],
+                              ),
+                              const SizedBox(height: 14),
+                              Text(item.title,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
-                                      color: AppColors.muted, height: 1.35)),
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                    child: Text(item.publisher,
-                                        style: const TextStyle(
-                                            fontSize: 11,
-                                            color: AppColors.muted))),
-                                Text('???% credibility',
-                                    style: TextStyle(
-                                        fontSize: 11,
-                                        fontWeight: FontWeight.bold,
-                                        color: accent)),
-                              ],
-                            ),
-                          ],
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.text)),
+                              const SizedBox(height: 8),
+                              Expanded(
+                                child: Text(item.summary,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        color: AppColors.muted, height: 1.35)),
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: Text(item.publisher,
+                                          style: const TextStyle(
+                                              fontSize: 11,
+                                              color: AppColors.muted))),
+                                  Text('???% credibility',
+                                      style: TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.bold,
+                                          color: accent)),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
