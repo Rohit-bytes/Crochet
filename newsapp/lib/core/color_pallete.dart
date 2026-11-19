@@ -7,6 +7,14 @@ class ColorPalette {
   // Primary Colors
   // =========================
 
+  static const background = Color(0xFFF8FAFD);
+  static const surface = Colors.white;
+  static const textPrimary = Color(0xFF101828);
+  static const textSecondary = Color(0xFF667085);
+  static const divider = Color(0xFFEAECF0);
+  static const breaking = Color(0xFFEF3434);
+
+  static const radius = 18.0;
   static const Color primary = Color(0xFF3B82F6);
   static const Color primaryLight = Color(0xFF60A5FA);
   static const Color Green = Color.fromARGB(255, 96, 250, 155);
@@ -19,16 +27,11 @@ class ColorPalette {
   // Background & Surface
   // =========================
 
-  static const Color background = Color(0xFFDBEAFE);
   static const Color backgroundtop = Color.fromARGB(193, 201, 223, 253);
-  static const Color surface = Color(0xFFF1F5F9);
 
   // =========================
   // Text Colors
   // =========================
-
-  static const Color textPrimary = Color(0xFF0F172A);
-  static const Color textSecondary = Color(0xFF64748B);
 
   // =========================
   // Status Colors

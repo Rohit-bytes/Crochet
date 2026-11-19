@@ -74,8 +74,8 @@ class ChooseRole extends StatelessWidget {
                             isstudent: false,
                             imagePath: "assets/teacher.png",
                             onPressed: () {
-                              authController.changeIsStudent(false);
-                              Get.offAllNamed(AppRoutes.teacherlogin);
+                              // authController.changeIsStudent(false);
+                              // Get.offAllNamed(AppRoutes.teacherlogin);
                             },
                             subtitle:
                                 "Take attendance, manage classes and more",
@@ -86,8 +86,8 @@ class ChooseRole extends StatelessWidget {
                             isstudent: true,
                             imagePath: "assets/student.png",
                             onPressed: () {
-                              authController.changeIsStudent(true);
-                              Get.offAllNamed(AppRoutes.teacherlogin);
+                              // authController.changeIsStudent(true);
+                              // Get.offAllNamed(AppRoutes.teacherlogin);
                             },
                             subtitle: "View your attendance and stay updated",
                             title: "I am a Student",

@@ -20,17 +20,7 @@ class TeacherRegister extends StatelessWidget {
         return Scaffold(
           backgroundColor: ColorPalette.background,
           appBar: AppBar(
-            actions: [
-              TextButton(
-                onPressed: () {
-                  authController.toggleIsStudent();
-                },
-                child: Text(
-                  "Switch to ${authController.isStudent == true ? "teacher" : "student"}",
-                  style: TextStyle(fontWeight: FontWeight.w800),
-                ),
-              ),
-            ],
+            actions: [],
             toolbarHeight: 50.h,
             surfaceTintColor: Colors.transparent,
             backgroundColor: ColorPalette.background,
@@ -55,7 +45,7 @@ class TeacherRegister extends StatelessWidget {
                   Row(
                     children: [
                       CustomText(
-                        "${authController.isStudent == true ? "Student" : "Teacher"} Registration",
+                        "Registration",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 30.w,
@@ -80,15 +70,6 @@ class TeacherRegister extends StatelessWidget {
                     prefixIcon: Icons.person,
                   ),
                   SizedBox(height: 10.h),
-                  CustomTextField(
-                    controller: authController.regEnrollNumcontrol,
-                    errorText: authController.enrollNoError,
-                    hint:
-                        "Enter ${authController.isStudent == true ? "Enrollment" : "Employee"} Number"
-                            .tr,
-                    prefixIcon: Icons.numbers,
-                    isPassword: false,
-                  ),
 
                   SizedBox(height: 10.h),
                   CustomTextField(

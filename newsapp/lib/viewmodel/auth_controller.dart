@@ -189,43 +189,21 @@ class AuthController extends GetxController {
       return;
     }
 
-    await signUpUser(
-      name,
-      enrollno,
-      email,
-      password,
-      repPassword,
-      gender,
-      isStudent,
-    );
+    await signUpUser(name, email, password, repPassword, gender);
   }
 
   String get enrollmentNumber {
     return user?.userMetadata?['enrollNumber']?.toString() ?? '';
   }
 
-  bool isStudent = false;
-  void changeIsStudent(bool check) {
-    isStudent = check;
-    print("isStudent is change to " + isStudent.toString());
-    update();
-  }
-
-  void toggleIsStudent() {
-    isStudent = !isStudent;
-    print("isStudent is change to " + isStudent.toString());
-    update();
-  }
   // ================= SUPABASE TEACHER SIGNUP =================
 
   Future<void> signUpUser(
     String name,
-    String enrollno,
     String email,
     String password,
     String repPassword,
     String gender,
-    bool isStudent,
   ) async {
     try {
       isLoading = true;
@@ -244,16 +222,12 @@ class AuthController extends GetxController {
       }
 
       // Create profile separately
-      await supabase
-          .from(isStudent == true ? "student_profiles" : "teacher_profiles")
-          .insert({
-            'id': user.id,
-            'name': name.trim(),
-            'email': email.trim(),
-            'enrollment_number': enrollno.trim(),
-            'is_student': isStudent,
-            'gender': gender,
-          });
+      await supabase.from("profiles").insert({
+        'id': user.id,
+        'name': name.trim(),
+        'email': email.trim(),
+        'gender': gender,
+      });
       await getUserDetails();
 
       Get.offAllNamed(AppRoutes.landingpage);
@@ -294,8 +268,6 @@ class AuthController extends GetxController {
           .maybeSingle();
 
       if (studentResponse != null) {
-        isStudent = true;
-
         userDetails = UserDetails.fromMap(studentResponse);
         update();
         return;
@@ -309,8 +281,6 @@ class AuthController extends GetxController {
           .maybeSingle();
 
       if (teacherResponse != null) {
-        isStudent = false;
-
         userDetails = UserDetails.fromMap(teacherResponse);
         update();
         return;

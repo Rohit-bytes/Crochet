@@ -29,17 +29,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
           backgroundColor: ColorPalette.background,
 
           appBar: AppBar(
-            actions: [
-              TextButton(
-                onPressed: () {
-                  authController.toggleIsStudent();
-                },
-                child: Text(
-                  "Switch to ${authController.isStudent == true ? "teacher" : "student"}",
-                  style: TextStyle(fontWeight: FontWeight.w800),
-                ),
-              ),
-            ],
+            actions: [],
             toolbarHeight: 50.h,
             surfaceTintColor: Colors.transparent,
             backgroundColor: ColorPalette.background,
@@ -67,9 +57,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
                   Row(
                     children: [
                       CustomText(
-                        authController.isStudent == true
-                            ? "Student Login"
-                            : "Teacher Login",
+                        "Teacher Login",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 30.w,

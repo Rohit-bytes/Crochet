@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
     return GetBuilder<AuthController>(
       builder: (authController) {
         final user = authController.userDetails;
-        final bool student = authController.isStudent == true;
+        // final bool student = authController.isStudent == true;
 
         // -----------------------------------------
         // Loading state
@@ -54,19 +54,13 @@ class ProfileScreen extends StatelessWidget {
                               height: 105.w,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: student
-                                    ? ColorPalette.success.withOpacity(0.10)
-                                    : ColorPalette.primary.withOpacity(0.10),
+                                color: ColorPalette.primary.withOpacity(0.10),
                               ),
                               child: Center(
                                 child: Icon(
-                                  student
-                                      ? Icons.person_rounded
-                                      : Icons.school_rounded,
+                                  Icons.school_rounded,
                                   size: 52.sp,
-                                  color: student
-                                      ? ColorPalette.success
-                                      : ColorPalette.primary,
+                                  color: ColorPalette.primary,
                                 ),
                               ),
                             ),
@@ -130,35 +124,16 @@ class ProfileScreen extends StatelessWidget {
                             vertical: 8.h,
                           ),
                           decoration: BoxDecoration(
-                            color: student
-                                ? ColorPalette.success.withOpacity(0.12)
-                                : ColorPalette.primary.withOpacity(0.12),
+                            color: ColorPalette.primary.withOpacity(0.12),
                             borderRadius: BorderRadius.circular(30.r),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Icon(
-                                student
-                                    ? Icons.person_rounded
-                                    : Icons.school_rounded,
+                                Icons.school_rounded,
                                 size: 17.sp,
-                                color: student
-                                    ? ColorPalette.success
-                                    : ColorPalette.primary,
-                              ),
-
-                              SizedBox(width: 7.w),
-
-                              Text(
-                                student ? 'Student' : 'Teacher',
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: student
-                                      ? ColorPalette.success
-                                      : ColorPalette.primary,
-                                ),
+                                color: ColorPalette.primary,
                               ),
                             ],
                           ),
@@ -191,28 +166,6 @@ class ProfileScreen extends StatelessWidget {
                       ),
 
                       _divider(),
-
-                      if (student) ...[
-                        // -------------------------
-                        // STUDENT
-                        // -------------------------
-
-                        _infoRow(
-                          icon: Icons.badge_outlined,
-                          title: 'Enrollment No',
-                          value: _valueOrFallback(user.enrollmentNumber),
-                        ),
-                      ] else ...[
-                        // -------------------------
-                        // TEACHER
-                        // -------------------------
-
-                        _infoRow(
-                          icon: Icons.badge_outlined,
-                          title: 'Employee ID',
-                          value: _valueOrFallback(user.enrollmentNumber),
-                        ),
-                      ],
 
                       _divider(),
 

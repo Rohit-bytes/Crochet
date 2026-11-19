@@ -1,7 +1,7 @@
 import 'package:TrustLens/auth/choose_role.dart';
-import 'package:TrustLens/auth/teacher_login.dart';
+import 'package:TrustLens/auth/login.dart';
 import 'package:TrustLens/auth/splash_screen.dart';
-import 'package:TrustLens/auth/teacher_register.dart';
+import 'package:TrustLens/auth/register.dart';
 import 'package:TrustLens/view/add_class/add_classess.dart';
 import 'package:TrustLens/view/add_class/attendance_widgets.dart/start_attendance_screen.dart';
 import 'package:TrustLens/view/add_class/class_add_succesfully.dart';

@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     Timer(const Duration(seconds: 3), () async {
       if (supabase.auth.currentUser == null) {
-        Get.offNamed(AppRoutes.register);
+        Get.offNamed(AppRoutes.landingpage);
       } else {
         final authController = Get.find<AuthController>();
         await authController.getUserDetails();
